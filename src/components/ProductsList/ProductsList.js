@@ -1,16 +1,28 @@
 import Product from "../Product/Product";
 import styles from "./productsList.module.css";
 
-const ProductsList = () => {
+const ProductsList = ({ products, removeProduct }) => {
+   const renderProducts = () => {
+      if (products.length === 0)
+         return (
+            <div>
+               <h2>there are no products yet!</h2>
+            </div>
+         );
+
+      return products.map((p) => (
+         <Product
+            key={p.id}
+            product={p}
+            removeProduct={removeProduct}
+         />
+      ));
+   };
+
    return (
       <div className={styles.productsList__container}>
          <h2 className={styles.productsList__title}>Products List :</h2>
-         <div className={styles.products__wrapper}>
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-         </div>
+         <div className={styles.products__wrapper}>{renderProducts()}</div>
       </div>
    );
 };
