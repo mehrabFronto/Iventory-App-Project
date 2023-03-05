@@ -1,6 +1,18 @@
 import styles from "./productForm.module.css";
 
-const ProductForm = () => {
+const ProductsForm = ({ categories }) => {
+   const renderOptions = () => {
+      return categories.map((category) => {
+         return (
+            <option
+               key={category.id}
+               value={category.value}>
+               {category.title}
+            </option>
+         );
+      });
+   };
+
    return (
       <form className={styles.form}>
          <h2 className={styles.form__title}>Add Product :</h2>
@@ -12,9 +24,7 @@ const ProductForm = () => {
             />
             <select className={styles.form__select}>
                <option value="">Select a category</option>
-               <option value="">1</option>
-               <option value="">2</option>
-               <option value="">3</option>
+               {renderOptions()}
             </select>
             <input
                type="number"
@@ -37,4 +47,4 @@ const ProductForm = () => {
    );
 };
 
-export default ProductForm;
+export default ProductsForm;
