@@ -1,13 +1,16 @@
-const ProductsForm = () => {
+import styles from "./productForm.module.css";
+
+const ProductForm = () => {
    return (
-      <form>
-         <h2>Add Product :</h2>
-         <div>
+      <form className={styles.form}>
+         <h2 className={styles.form__title}>Add Product :</h2>
+         <div className={styles.form__wrapper}>
             <input
                type="text"
                placeholder="product title..."
+               className={styles.form__input}
             />
-            <select>
+            <select className={styles.form__select}>
                <option value="">Select a category</option>
                <option value="">1</option>
                <option value="">2</option>
@@ -16,14 +19,22 @@ const ProductsForm = () => {
             <input
                type="number"
                placeholder="product quantity..."
+               className={styles.form__input}
             />
-            <div>
-               <button>Cancel</button>
-               <button type="submit">Add</button>
+            <div className={styles.form__buttons__container}>
+               <button className={`${styles.btn} ${styles.btnCancel}`}>
+                  Cancel
+               </button>
+
+               <button
+                  className={`${styles.btn} ${styles.btnAdd}`}
+                  type="submit">
+                  Add
+               </button>
             </div>
          </div>
       </form>
    );
 };
 
-export default ProductsForm;
+export default ProductForm;

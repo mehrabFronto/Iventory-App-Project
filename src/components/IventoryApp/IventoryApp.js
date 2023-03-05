@@ -1,14 +1,14 @@
-import CategoryForm from "../CategotyForm/CategoryForm";
+import CategoryForm from "../CategoryForm/CategoryForm";
 import NavBar from "../NavBar/NavBar";
-import ProductsForm from "../ProductForm/ProductForm";
+import ProductForm from "../ProductForm/ProductForm";
 import ProductsList from "../ProductsList/ProductsList";
 
 const IventoryApp = () => {
    return (
-      <div>
+      <div className="app">
          <NavBar />
          <CategoryForm />
-         <ProductsForm />
+         <ProductForm />
          <ProductsList />
       </div>
    );
