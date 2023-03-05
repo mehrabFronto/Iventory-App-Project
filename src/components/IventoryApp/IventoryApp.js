@@ -35,6 +35,12 @@ const IventoryApp = () => {
       localStorage.setItem("products", JSON.stringify(products));
    };
 
+   const removeProductHandler = (id) => {
+      const filteredProducts = products.filter((p) => p.id !== id);
+      setProducts(filteredProducts);
+      localStorage.setItem("products", JSON.stringify(filteredProducts));
+   };
+
    return (
       <div className="app">
          <NavBar />
@@ -43,7 +49,10 @@ const IventoryApp = () => {
             categories={categories}
             addProduct={addProductHandler}
          />
-         <ProductsList products={products} />
+         <ProductsList
+            products={products}
+            removeProduct={removeProductHandler}
+         />
       </div>
    );
 };
