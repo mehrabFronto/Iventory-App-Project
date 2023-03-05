@@ -1,7 +1,7 @@
 import Product from "../Product/Product";
 import styles from "./productsList.module.css";
 
-const ProductsList = ({ products }) => {
+const ProductsList = ({ products, removeProduct }) => {
    const renderProducts = () => {
       if (products.length === 0)
          return (
@@ -14,6 +14,7 @@ const ProductsList = ({ products }) => {
          <Product
             key={p.id}
             product={p}
+            removeProduct={removeProduct}
          />
       ));
    };
