@@ -43,7 +43,7 @@ const IventoryApp = () => {
             categories={categories}
             addProduct={addProductHandler}
          />
-         <ProductsList />
+         <ProductsList products={products} />
       </div>
    );
 };
