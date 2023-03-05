@@ -9,9 +9,14 @@ const IventoryApp = () => {
       JSON.parse(localStorage.getItem("categories")) || [],
    );
 
+   const [products, setProducts] = useState(
+      JSON.parse(localStorage.getItem("products")) || [],
+   );
+
    useEffect(() => {
       localStorage.setItem("categories", JSON.stringify(categories));
-   }, [categories]);
+      localStorage.setItem("products", JSON.stringify(products));
+   }, [categories, products]);
 
    const addCategoryHandler = (title) => {
       const newCategory = {
@@ -23,11 +28,21 @@ const IventoryApp = () => {
       localStorage.setItem("categories", JSON.stringify(categories));
    };
 
+   const addProductHandler = (newProduct) => {
+      newProduct.id = new Date().getTime();
+      newProduct.createdAt = new Date().toISOString();
+      setProducts([...products, newProduct]);
+      localStorage.setItem("products", JSON.stringify(products));
+   };
+
    return (
       <div className="app">
          <NavBar />
          <CategoryForm addCategory={addCategoryHandler} />
-         <ProductsForm categories={categories} />
+         <ProductsForm
+            categories={categories}
+            addProduct={addProductHandler}
+         />
          <ProductsList />
       </div>
    );
