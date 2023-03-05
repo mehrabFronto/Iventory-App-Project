@@ -43,7 +43,7 @@ const IventoryApp = () => {
 
    return (
       <div className="app">
-         <NavBar />
+         <NavBar counter={products.length} />
          <CategoryForm addCategory={addCategoryHandler} />
          <ProductsForm
             categories={categories}
