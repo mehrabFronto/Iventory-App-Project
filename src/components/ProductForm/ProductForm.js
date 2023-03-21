@@ -2,23 +2,27 @@ import { useState } from "react";
 import styles from "./productForm.module.css";
 
 const ProductsForm = ({ categories, addProduct }) => {
-   const [productTitle, setProductTitle] = useState("");
-   const [productCategory, setProductCategory] = useState("");
-   const [productQuantity, setProductQuantity] = useState("");
+   const [product, setProduct] = useState({
+      title: "",
+      category: "",
+      quantity: "",
+   });
 
    const submitHandler = (e) => {
-      if (!productTitle) return alert("please enter the category title");
-      if (!productCategory) return alert("please select the product category");
+      if (!product.title) return alert("please enter the product title");
+      if (!product.category) return alert("please select the product category");
       e.preventDefault();
       const newProduct = {
-         title: productTitle,
-         category: productCategory,
-         quantity: Number(productQuantity),
+         title: product.title,
+         category: product.category,
+         quantity: Number(product.quantity),
       };
       addProduct(newProduct);
-      setProductTitle("");
-      setProductCategory("");
-      setProductQuantity("");
+      setProduct({
+         title: "",
+         category: "",
+         quantity: "",
+      });
    };
 
    const renderOptions = () => {
@@ -43,13 +47,17 @@ const ProductsForm = ({ categories, addProduct }) => {
                type="text"
                placeholder="product title..."
                className={styles.form__input}
-               onChange={(e) => setProductTitle(e.target.value)}
-               value={productTitle}
+               onChange={(e) =>
+                  setProduct({ ...product, title: e.target.value })
+               }
+               value={product.title}
             />
             <select
                className={styles.form__select}
-               onChange={(e) => setProductCategory(e.target.value)}
-               value={productCategory}>
+               onChange={(e) =>
+                  setProduct({ ...product, category: e.target.value })
+               }
+               value={product.category}>
                <option value="">Select a category</option>
                {renderOptions()}
             </select>
@@ -57,11 +65,22 @@ const ProductsForm = ({ categories, addProduct }) => {
                type="number"
                placeholder="product quantity..."
                className={styles.form__input}
-               onChange={(e) => setProductQuantity(e.target.value)}
-               value={productQuantity}
+               onChange={(e) =>
+                  setProduct({ ...product, quantity: e.target.value })
+               }
+               value={product.quantity}
             />
             <div className={styles.form__buttons__container}>
-               <button className={`${styles.btn} ${styles.btnCancel}`}>
+               <button
+                  type="button"
+                  onClick={() =>
+                     setProduct({
+                        title: "",
+                        category: "",
+                        quantity: "",
+                     })
+                  }
+                  className={`${styles.btn} ${styles.btnCancel}`}>
                   Cancel
                </button>
 
