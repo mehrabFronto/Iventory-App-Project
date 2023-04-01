@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./productForm.module.css";
 
-const ProductsForm = ({ categories, addProduct }) => {
+const ProductsForm = ({ options, addProduct }) => {
    const [product, setProduct] = useState({
       title: "",
       category: "",
@@ -22,18 +22,6 @@ const ProductsForm = ({ categories, addProduct }) => {
          title: "",
          category: "",
          quantity: "",
-      });
-   };
-
-   const renderOptions = () => {
-      return categories.map((category) => {
-         return (
-            <option
-               key={category.id}
-               value={category.value}>
-               {category.title}
-            </option>
-         );
       });
    };
 
@@ -59,7 +47,7 @@ const ProductsForm = ({ categories, addProduct }) => {
                }
                value={product.category}>
                <option value="">Select a category</option>
-               {renderOptions()}
+               {options}
             </select>
             <input
                type="number"
