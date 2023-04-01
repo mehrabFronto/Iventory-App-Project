@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .productsList__title{
