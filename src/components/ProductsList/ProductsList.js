@@ -3,7 +3,9 @@ import Product from "../Product/Product";
 import styles from "./productsList.module.css";
 
 const ProductsList = ({ products, removeProduct, options, filterHandler }) => {
+   // conditional rendering
    const renderProducts = () => {
+      // if there is not any products => return a message . else return the list of products
       if (products.length === 0)
          return (
             <div>
