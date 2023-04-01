@@ -13,10 +13,15 @@ const IventoryApp = () => {
       JSON.parse(localStorage.getItem("products")) || [],
    );
 
+   const [filteredProducts, setFilteredProducts] = useState([]);
+
+   const [filterValue, setFilterValue] = useState(" ");
+
    useEffect(() => {
       localStorage.setItem("categories", JSON.stringify(categories));
       localStorage.setItem("products", JSON.stringify(products));
-   }, [categories, products]);
+      filterHandler(filterValue, products);
+   }, [categories, products, filterValue]);
 
    const addCategoryHandler = (title) => {
       const newCategory = {
@@ -28,30 +33,64 @@ const IventoryApp = () => {
       localStorage.setItem("categories", JSON.stringify(categories));
    };
 
-   const addProductHandler = (newProduct) => {
-      newProduct.id = new Date().getTime();
-      newProduct.createdAt = new Date().toISOString();
-      setProducts([...products, newProduct]);
+   const addProductHandler = (product) => {
+      const newProduct = {
+         ...product,
+         id: new Date().getTime(),
+         createdAt: new Date().toISOString(),
+      };
+
+      const updatedProducts = [...products, newProduct];
+
+      setProducts(updatedProducts);
       localStorage.setItem("products", JSON.stringify(products));
+      filterHandler(filterValue, updatedProducts);
+      // const filtered = products.filter((p) => p.category === filterValue);
+      // setFilteredProducts(filtered);
    };
 
    const removeProductHandler = (id) => {
       const filteredProducts = products.filter((p) => p.id !== id);
       setProducts(filteredProducts);
       localStorage.setItem("products", JSON.stringify(filteredProducts));
+      filterHandler(filterValue, filteredProducts);
+   };
+
+   const renderOptions = () => {
+      return categories.map((category) => {
+         return (
+            <option
+               key={category.id}
+               value={category.value}>
+               {category.title}
+            </option>
+         );
+      });
+   };
+
+   const filterHandler = (filter, products) => {
+      setFilterValue(filter);
+      if (filter === " ") {
+         setFilteredProducts(products);
+      } else {
+         const filterProducts = products.filter((p) => p.category === filter);
+         setFilteredProducts(filterProducts);
+      }
    };
 
    return (
       <div className="app">
-         <NavBar counter={products.length} />
+         <NavBar counter={filteredProducts.length} />
          <CategoryForm addCategory={addCategoryHandler} />
          <ProductsForm
-            categories={categories}
+            options={renderOptions()}
             addProduct={addProductHandler}
          />
          <ProductsList
-            products={products}
+            products={filteredProducts}
             removeProduct={removeProductHandler}
+            options={renderOptions()}
+            filterHandler={filterHandler}
          />
       </div>
    );
