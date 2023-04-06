@@ -1,23 +1,18 @@
-.filter__select{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 1px;
-    text-overflow: '';
-    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-    background-repeat: no-repeat;
-    background-position-x: 97%;
-    background-position-y: 10px;
-    outline: none;
-    border: none;
-    border-radius: 4px ;
-    padding: 15px 10px;
-    width: 50%;
-    background-color: #2E294e;
-    color: #f1e9da;
-    transition: all 0.2s ease-in;
-    margin-bottom: 20px;
+.filter__container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.filter__select option{
-    font-size: 1.4rem;
+@media screen and (min-width:768px) {
+    .filter__container{
+        gap: 15px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .filter__container{
+        gap: 20px;
+    }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CategoryForm from "../CategoryForm/CategoryForm";
 import NavBar from "../NavBar/NavBar";
 import ProductsForm from "../ProductForm/ProductForm";
+import { toast } from "react-toastify";
 import ProductsList from "../ProductsList/ProductsList";
 
 const IventoryApp = () => {
@@ -78,6 +79,8 @@ const IventoryApp = () => {
 
       // update filtered products
       filterHandler(filterValue, filteredProducts);
+
+      toast.success("product successfully deleted");
    };
 
    const renderOptions = () => {

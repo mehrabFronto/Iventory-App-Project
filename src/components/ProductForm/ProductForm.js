@@ -1,5 +1,5 @@
+import { toast } from "react-toastify";
 import { useState } from "react";
-import styles from "./productForm.module.css";
 
 const ProductsForm = ({ options, addProduct }) => {
    // new product
@@ -34,19 +34,21 @@ const ProductsForm = ({ options, addProduct }) => {
          category: "",
          quantity: "",
       });
+
+      toast.success("product successfully added");
    };
 
    return (
       <form
-         className={styles.form}
+         className="form"
          onSubmit={submitHandler}>
-         <h2 className={styles.form__title}>Add Product :</h2>
-         <div className={styles.form__wrapper}>
+         <h2>Add Product :</h2>
+         <div className="form__wrapper">
             {/* title input */}
             <input
                type="text"
                placeholder="product title..."
-               className={styles.form__input}
+               className="form__input"
                onChange={(e) =>
                   setProduct({ ...product, title: e.target.value })
                }
@@ -54,7 +56,7 @@ const ProductsForm = ({ options, addProduct }) => {
             />
             {/* categories select option */}
             <select
-               className={styles.form__select}
+               className="select form__select"
                onChange={(e) =>
                   setProduct({ ...product, category: e.target.value })
                }
@@ -67,14 +69,14 @@ const ProductsForm = ({ options, addProduct }) => {
             <input
                type="number"
                placeholder="product quantity..."
-               className={styles.form__input}
+               className="form__input"
                onChange={(e) =>
                   setProduct({ ...product, quantity: e.target.value })
                }
                value={product.quantity}
             />
             {/* buttons */}
-            <div className={styles.form__buttons__container}>
+            <div className="form__buttons__container">
                {/* cancel btn */}
                <button
                   type="button"
@@ -85,12 +87,12 @@ const ProductsForm = ({ options, addProduct }) => {
                         quantity: "",
                      })
                   }
-                  className={`${styles.btn} ${styles.btnCancel}`}>
+                  className="btn secondary--btn">
                   Cancel
                </button>
                {/* add btn */}
                <button
-                  className={`${styles.btn} ${styles.btnAdd}`}
+                  className="btn primary--btn"
                   type="submit">
                   Add
                </button>

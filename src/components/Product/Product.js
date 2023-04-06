@@ -15,11 +15,13 @@ const Product = ({ product, removeProduct }) => {
             })}
          </span>
          {/* product quantity */}
-         <span className={styles.product__quantity}>{product.quantity}</span>
+         <span className="quantity">{product.quantity}</span>
          {/* product category */}
          <span className={styles.product__category}>{product.category}</span>
          {/* remove product btn */}
-         <button onClick={() => removeProduct(product.id)}>
+         <button
+            className="btn delete--btn"
+            onClick={() => removeProduct(product.id)}>
             <BiTrash />
          </button>
       </div>

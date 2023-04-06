@@ -5,7 +5,7 @@ const NavBar = ({ counter }) => {
       <nav className={styles.nav}>
          <h1>Iventory App</h1>
          {/* the count of products */}
-         <span>{counter}</span>
+         <span className="quantity">{counter}</span>
       </nav>
    );
 };
