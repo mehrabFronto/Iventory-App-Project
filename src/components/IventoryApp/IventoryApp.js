@@ -22,6 +22,8 @@ const IventoryApp = () => {
    // the value of the filter select option on Filter component
    const [filterValue, setFilterValue] = useState(" ");
 
+   const [sortValue, setSortValue] = useState("newest");
+
    useEffect(() => {
       // update categories on changes
       localStorage.setItem("categories", JSON.stringify(categories));
@@ -29,9 +31,12 @@ const IventoryApp = () => {
       // update products on changes
       localStorage.setItem("products", JSON.stringify(products));
 
+      // update sorted products on changes
+      sortHandler(sortValue, products);
+
       // update filtered products on changes
       filterHandler(filterValue, products);
-   }, [categories, products, filterValue]);
+   }, [categories, products, filterValue, sortValue]);
 
    const addCategoryHandler = (title) => {
       // create new category
@@ -63,6 +68,9 @@ const IventoryApp = () => {
       // set new data
       localStorage.setItem("products", JSON.stringify(products));
 
+      // update sorted products
+      sortHandler(sortValue, updatedProducts);
+
       // update filtered products
       filterHandler(filterValue, updatedProducts);
    };
@@ -76,6 +84,9 @@ const IventoryApp = () => {
 
       // set new data
       localStorage.setItem("products", JSON.stringify(filteredProducts));
+
+      // update sorted products
+      sortHandler(sortValue, filteredProducts);
 
       // update filtered products
       filterHandler(filterValue, filteredProducts);
@@ -104,9 +115,22 @@ const IventoryApp = () => {
       if (filter === " ") {
          setFilteredProducts(products);
       } else {
-         const filterProducts = products.filter((p) => p.category === filter);
-         setFilteredProducts(filterProducts);
+         const filteredProducts = products.filter((p) => p.category === filter);
+         setFilteredProducts(filteredProducts);
       }
+   };
+
+   const sortHandler = (sort, products) => {
+      // set the value of the filter select option on Filter component
+      setSortValue(sort);
+
+      const sortedProducts = products.sort((a, b) => {
+         if (sort === "newest")
+            return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+         else if (sort === "oldest")
+            return new Date(a.createdAt) < new Date(b.createdAt) ? -1 : 1;
+      });
+      setFilteredProducts(sortedProducts);
    };
 
    return (
@@ -122,6 +146,7 @@ const IventoryApp = () => {
             removeProduct={removeProductHandler}
             options={renderOptions()}
             filterHandler={filterHandler}
+            sortHandler={sortHandler}
          />
       </div>
    );
