@@ -4,6 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import ProductsForm from "../ProductForm/ProductForm";
 import { toast } from "react-toastify";
 import ProductsList from "../ProductsList/ProductsList";
+import CategoriesList from "../CategoriesList/CategoriesList";
 
 const IventoryApp = () => {
    // get categories from localStorage
@@ -44,6 +45,7 @@ const IventoryApp = () => {
          value: title.toLowerCase().split(" ").join(""),
          title,
          id: new Date().getTime(),
+         createdAt: new Date().toISOString(),
       };
 
       // update categories
@@ -133,10 +135,25 @@ const IventoryApp = () => {
       setFilteredProducts(sortedProducts);
    };
 
+   const removeCategoryHandler = (id) => {
+      // filter categories
+      const filteredCategories = categories.filter((c) => c.id !== id);
+
+      // update categories
+      setCategories(filteredCategories);
+
+      // set new data
+      localStorage.setItem("categories", JSON.stringify(filteredCategories));
+   };
+
    return (
       <div className="app">
          <NavBar counter={filteredProducts.length} />
          <CategoryForm addCategory={addCategoryHandler} />
+         <CategoriesList
+            categories={categories}
+            onRemove={removeCategoryHandler}
+         />
          <ProductsForm
             options={renderOptions()}
             addProduct={addProductHandler}

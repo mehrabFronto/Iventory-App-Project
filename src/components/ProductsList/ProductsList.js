@@ -28,14 +28,14 @@ const ProductsList = ({
    };
 
    return (
-      <div className="productsList__container">
+      <div className="list__container">
          <h2>Products List :</h2>
          <Filter
             options={options}
             filterHandler={filterHandler}
             sortHandler={sortHandler}
          />
-         <div className="products__wrapper">{renderProducts()}</div>
+         <div className="list">{renderProducts()}</div>
       </div>
    );
 };

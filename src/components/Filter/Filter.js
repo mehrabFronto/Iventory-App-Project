@@ -3,7 +3,7 @@ import styles from "./filter.module.css";
 
 const Filter = ({ options, filterHandler, sortHandler }) => {
    // get all products from localStorage
-   const [products, setProducts] = useState(
+   const [products] = useState(
       JSON.parse(localStorage.getItem("products")) || [],
    );
 

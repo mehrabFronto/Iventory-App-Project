@@ -43,7 +43,7 @@ const ProductsForm = ({ options, addProduct }) => {
          className="form"
          onSubmit={submitHandler}>
          <h2>Add Product :</h2>
-         <div className="form__wrapper">
+         <div className="form__body">
             {/* title input */}
             <input
                type="text"
@@ -76,7 +76,7 @@ const ProductsForm = ({ options, addProduct }) => {
                value={product.quantity}
             />
             {/* buttons */}
-            <div className="form__buttons__container">
+            <div className="buttons__container">
                {/* cancel btn */}
                <button
                   type="button"
@@ -87,12 +87,12 @@ const ProductsForm = ({ options, addProduct }) => {
                         quantity: "",
                      })
                   }
-                  className="btn secondary--btn">
+                  className="btn btn--secondary">
                   Cancel
                </button>
                {/* add btn */}
                <button
-                  className="btn primary--btn"
+                  className="btn btn--primary"
                   type="submit">
                   Add
                </button>

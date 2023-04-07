@@ -22,10 +22,13 @@ const CategoryForm = ({ addCategory }) => {
 
    return (
       <form
+         style={{
+            marginBottom: "10px",
+         }}
          className="form"
          onSubmit={submitHandler}>
          <h2>Add Category :</h2>
-         <div className="form__wrapper">
+         <div className="form__body">
             {/* title input */}
             <input
                type="text"
@@ -35,17 +38,17 @@ const CategoryForm = ({ addCategory }) => {
                value={title}
             />
             {/* buttons */}
-            <div className="form__buttons__container">
+            <div className="buttons__container">
                {/* cancel btn */}
                <button
-                  className="btn secondary--btn"
+                  className="btn btn--secondary"
                   type="button"
                   onChange={() => setTitle("")}>
                   Cancel
                </button>
                {/* add btn */}
                <button
-                  className="btn primary--btn"
+                  className="btn btn--primary"
                   type="submit">
                   Add
                </button>

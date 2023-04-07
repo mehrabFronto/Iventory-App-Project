@@ -9,7 +9,7 @@
 
 /* btn section */
 
-.form__buttons__container{
+.buttons__container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,31 +23,31 @@
     padding: 10px;
     border-radius: 4px;
     font-size: 1.4rem;
-    flex: 1;
     transition: all 0.2s ease-in;
 }
 
-.primary--btn{
+.btn--primary{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: var(--secondary-color);
     background-color: var(--primary-color);
     border: 2px solid var(--primary-color);
     font-weight: bold;
+    flex: 1;
 }
 
-.secondary--btn{
+.btn--secondary{
     color: var(--primary-color);
     background-color: var(--secondary-color);
     border: 2px solid var(--primary-color);
+    flex: 1;
 }
 
-.primary--btn:hover,
-.secondary--btn:hover{
+.btn--primary:hover,
+.btn--secondary:hover{
     transform: scale(0.97);
 }
 
-.delete--btn{
-    flex: 0;
+.btn--delete{
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
     border-radius: 100%;
@@ -60,7 +60,7 @@
     background-color: var(--secondary-color);
 }
 
-.delete--btn:hover{
+.btn--delete:hover{
     border: none;
     background-color: var(--primary-color);
     color: red;
@@ -87,21 +87,21 @@
     }
 
 }
-/* form , containers , wrappers section */
+/* form and lists  section */
 
 .form , 
-.productsList__container{
+.list__container{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
     margin-bottom: 30px;
-    padding: 15px;
+    padding: 0 15px;
 }
 
-.form__wrapper , 
-.products__wrapper{
+.form__body , 
+.list{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -109,7 +109,7 @@
 
 }
 
-.form__wrapper{
+.form__body{
     padding: 15px;
     background-color: var(--secondary-color);
     box-shadow: 0px 5px 15px var(--box-shadow-color);
@@ -118,13 +118,13 @@
 
 @media screen and (min-width:768px) {
     .form , 
-    .productsList__container{
+    .list__container{
         width: 50rem;
         padding: 0;
         margin-bottom: 40px;
     }
 
-    .form__wrapper{
+    .form__body{
         padding: 20px;
     }
 }
@@ -132,13 +132,13 @@
 
 @media screen and (min-width:1024px) {
     .form , 
-    .productsList__container{
+    .list__container{
         width: 60rem;
         padding: 0;
         margin-bottom: 40px;
     }
 
-    .form__wrapper{
+    .form__body{
         padding: 20px;
     }
 }
@@ -204,4 +204,18 @@
 
 .select option{
     font-size:1.4rem;
+}
+
+/* item section */
+
+.item{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding:15px 20px;
+    border-radius: 4px;
+    box-shadow: 0px 5px 15px var(--box-shadow-color);
 }

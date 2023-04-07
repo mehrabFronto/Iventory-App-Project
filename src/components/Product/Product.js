@@ -3,7 +3,7 @@ import styles from "./product.module.css";
 
 const Product = ({ product, removeProduct }) => {
    return (
-      <div className={styles.product}>
+      <div className="item">
          {/* product title */}
          <h3>{product.title}</h3>
          {/* product created date */}
@@ -20,7 +20,7 @@ const Product = ({ product, removeProduct }) => {
          <span className={styles.product__category}>{product.category}</span>
          {/* remove product btn */}
          <button
-            className="btn delete--btn"
+            className="btn btn--delete"
             onClick={() => removeProduct(product.id)}>
             <BiTrash />
          </button>
