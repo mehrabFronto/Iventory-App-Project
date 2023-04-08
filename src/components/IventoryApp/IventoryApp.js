@@ -146,6 +146,27 @@ const IventoryApp = () => {
       localStorage.setItem("categories", JSON.stringify(filteredCategories));
    };
 
+   const editProductHandler = (id, newTitle) => {
+      // find and get the product
+      const index = products.findIndex((p) => p.id === id);
+      const product = { ...products[index] };
+
+      // if title was not changed
+      if (product.title === newTitle) return;
+
+      // change title and date
+      product.title = newTitle;
+      product.createdAt = new Date().toISOString();
+
+      // update products new new product
+      const updatedProducts = [...products];
+      updatedProducts[index] = product;
+      setProducts(updatedProducts);
+      localStorage.setItem("products", JSON.stringify(updatedProducts));
+
+      toast.success("product title successfully edited");
+   };
+
    return (
       <div className="app">
          <NavBar counter={filteredProducts.length} />
@@ -164,6 +185,7 @@ const IventoryApp = () => {
             options={renderOptions()}
             filterHandler={filterHandler}
             sortHandler={sortHandler}
+            editHandler={editProductHandler}
          />
       </div>
    );

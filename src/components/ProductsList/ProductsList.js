@@ -7,6 +7,7 @@ const ProductsList = ({
    options,
    filterHandler,
    sortHandler,
+   editHandler,
 }) => {
    // conditional rendering
    const renderProducts = () => {
@@ -23,6 +24,7 @@ const ProductsList = ({
             key={p.id}
             product={p}
             removeProduct={removeProduct}
+            editHandler={editHandler}
          />
       ));
    };

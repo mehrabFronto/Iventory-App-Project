@@ -43,11 +43,13 @@
     border-radius: 6px;
 }
 
-.category{
+.category__detail{
+    width: 60%;
     display: flex;
     align-items: center;
-    gap: 65px;
+    justify-content : space-between;
 }
+
 
 @media screen and (min-width:768px) {
 
@@ -57,7 +59,7 @@
         height: 30px;
     }
 
-    .category{
-        gap: 100px;
+    .category__detail{
+        width: 40%;
     }
 }
