@@ -1,1 +1,1 @@
-![iventory](https://user-images.githubusercontent.com/101546573/222962137-ac8fda54-e336-4b29-9a96-807de95402d2.jpg)
+![Iventory(updated)1](https://user-images.githubusercontent.com/101546573/230722925-94cfb130-acd9-46c6-8225-c87d8f82d833.jpg)
