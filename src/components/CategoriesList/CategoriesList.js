@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { BiX, BiTrash } from "react-icons/bi";
+import { BiX } from "react-icons/bi";
 import styles from "./categoriesList.module.css";
+import Category from "../Category/Category";
 
 const CategoriesList = ({ categories, onRemove }) => {
    // for handle being open the categories list
@@ -26,29 +27,10 @@ const CategoriesList = ({ categories, onRemove }) => {
             <div
                className="item__container"
                key={c.id}>
-               <div className="item">
-                  {/* category detail */}
-                  <div className={styles.category__detail}>
-                     {/* category title */}
-                     <h3>{c.title}</h3>
-                     {/* category created date */}
-                     <span>
-                        {new Date(c.createdAt).toLocaleString("en", {
-                           weekday: "short",
-                           month: "short",
-                           day: "numeric",
-                        })}
-                     </span>
-                  </div>
-                  {/* remove category btn */}
-                  <div className="buttons__container">
-                     <button
-                        className="btn btn--delete"
-                        onClick={() => onRemove(c.id)}>
-                        <BiTrash />
-                     </button>
-                  </div>
-               </div>
+               <Category
+                  category={c}
+                  onRemove={onRemove}
+               />
             </div>
          );
       });

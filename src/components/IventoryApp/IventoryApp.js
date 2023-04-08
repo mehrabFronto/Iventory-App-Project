@@ -135,7 +135,7 @@ const IventoryApp = () => {
       setFilteredProducts(sortedProducts);
    };
 
-   const removeCategoryHandler = (id) => {
+   const removeCategoryHandler = (id, title) => {
       // filter categories
       const filteredCategories = categories.filter((c) => c.id !== id);
 
@@ -144,6 +144,10 @@ const IventoryApp = () => {
 
       // set new data
       localStorage.setItem("categories", JSON.stringify(filteredCategories));
+
+      const updatedProducts = products.filter((p) => p.category !== title);
+      setProducts(updatedProducts);
+      localStorage.setItem("products", JSON.stringify(updatedProducts));
    };
 
    const editProductHandler = (id, newTitle) => {
