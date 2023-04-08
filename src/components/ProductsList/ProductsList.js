@@ -1,8 +1,14 @@
 import Filter from "../Filter/Filter";
 import Product from "../Product/Product";
-import styles from "./productsList.module.css";
 
-const ProductsList = ({ products, removeProduct, options, filterHandler }) => {
+const ProductsList = ({
+   products,
+   removeProduct,
+   options,
+   filterHandler,
+   sortHandler,
+   editHandler,
+}) => {
    // conditional rendering
    const renderProducts = () => {
       // if there is not any products => return a message . else return the list of products
@@ -18,18 +24,20 @@ const ProductsList = ({ products, removeProduct, options, filterHandler }) => {
             key={p.id}
             product={p}
             removeProduct={removeProduct}
+            editHandler={editHandler}
          />
       ));
    };
 
    return (
-      <div className={styles.productsList__container}>
-         <h2 className={styles.productsList__title}>Products List :</h2>
+      <div className="list__container">
+         <h2>Products List :</h2>
          <Filter
             options={options}
             filterHandler={filterHandler}
+            sortHandler={sortHandler}
          />
-         <div className={styles.products__wrapper}>{renderProducts()}</div>
+         <div className="list">{renderProducts()}</div>
       </div>
    );
 };

@@ -1,5 +1,5 @@
-import styles from "./categoryForm.module.css";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const CategoryForm = ({ addCategory }) => {
    // the category title
@@ -16,33 +16,39 @@ const CategoryForm = ({ addCategory }) => {
 
       // clear the input
       setTitle("");
+
+      toast.success("category successfully added");
    };
 
    return (
       <form
-         className={styles.form}
+         style={{
+            marginBottom: "10px",
+         }}
+         className="form"
          onSubmit={submitHandler}>
-         <h2 className={styles.form__title}>Add Category :</h2>
-         <div className={styles.form__wrapper}>
+         <h2>Add Category :</h2>
+         <div className="form__body">
             {/* title input */}
             <input
                type="text"
                placeholder="category title..."
-               className={styles.form__input}
+               className="form__input"
                onChange={(e) => setTitle(e.target.value)}
                value={title}
             />
             {/* buttons */}
-            <div className={styles.form__buttons__container}>
+            <div className="buttons__container">
                {/* cancel btn */}
                <button
-                  className={`${styles.btn} ${styles.btnCancel}`}
+                  className="btn btn--secondary"
+                  type="button"
                   onChange={() => setTitle("")}>
                   Cancel
                </button>
                {/* add btn */}
                <button
-                  className={`${styles.btn} ${styles.btnAdd}`}
+                  className="btn btn--primary"
                   type="submit">
                   Add
                </button>
