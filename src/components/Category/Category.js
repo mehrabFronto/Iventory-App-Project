@@ -10,7 +10,7 @@ const Category = ({ category, onRemove }) => {
          {/* if user wants to delete a category => show a warning . else => show category */}
          {isDelete ? (
             <div className={styles.warn}>
-               <span>all of products with this category will delete!</span>
+               <span>products with this category will delete!</span>
                <div className="buttons__container">
                   <button
                      style={{ padding: "5px" }}
@@ -47,7 +47,7 @@ const Category = ({ category, onRemove }) => {
                {/* buttons */}
                <div className="buttons__container">
                   <button
-                     className="btn btn--delete"
+                     className="btn btn--item btn--delete"
                      onClick={() => setIsDelete(true)}>
                      <BiTrash />
                   </button>

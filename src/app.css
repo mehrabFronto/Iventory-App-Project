@@ -47,9 +47,7 @@
     transform: scale(0.97);
 }
 
-.btn--delete , 
-.btn--edit , 
-.btn--more{
+.btn--item{
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
     border-radius: 100%;
@@ -62,15 +60,15 @@
     background-color: var(--secondary-color);
 }
 
+
+.btn--item:hover{
+    transform: scale(1.2);
+}
+
 .btn--delete:hover{
     border: none;
     background-color: var(--primary-color);
     color: red;
-    transform: scale(1.2);
-}
-
-.btn--edit:hover,
-.btn--more:hover{
     transform: scale(1.2);
 }
 

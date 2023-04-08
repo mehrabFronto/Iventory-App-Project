@@ -42,13 +42,13 @@ const Product = ({ product, removeProduct, editHandler }) => {
                <div className="buttons__container">
                   <button
                      type="button"
-                     className="btn btn--edit"
+                     className="btn btn--item"
                      onClick={() => setIsEdit(false)}>
                      <BiX />
                   </button>
                   <button
                      type="submit"
-                     className="btn btn--edit">
+                     className="btn btn--item">
                      <BiCheck />
                   </button>
                </div>
@@ -63,17 +63,17 @@ const Product = ({ product, removeProduct, editHandler }) => {
             {/* remove product btn */}
             <div className="buttons__container">
                <button
-                  className="btn btn--delete"
+                  className="btn btn--item btn--delete"
                   onClick={() => removeProduct(product.id)}>
                   <BiTrash />
                </button>
                <button
-                  className="btn btn--edit"
+                  className="btn btn--item"
                   onClick={() => setIsEdit(!isEdit)}>
                   <BiEdit />
                </button>
                <button
-                  className="btn btn--more"
+                  className="btn btn--item"
                   onClick={() => setIsMore(!isMore)}>
                   <BiDotsVerticalRounded />
                </button>

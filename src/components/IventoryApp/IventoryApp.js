@@ -42,7 +42,7 @@ const IventoryApp = () => {
    const addCategoryHandler = (title) => {
       // create new category
       const newCategory = {
-         value: title.toLowerCase().split(" ").join(""),
+         value: title,
          title,
          id: new Date().getTime(),
          createdAt: new Date().toISOString(),
@@ -145,6 +145,9 @@ const IventoryApp = () => {
       // set new data
       localStorage.setItem("categories", JSON.stringify(filteredCategories));
 
+      toast.success("category successfully deleted");
+
+      // remove all products with deleted category
       const updatedProducts = products.filter((p) => p.category !== title);
       setProducts(updatedProducts);
       localStorage.setItem("products", JSON.stringify(updatedProducts));
