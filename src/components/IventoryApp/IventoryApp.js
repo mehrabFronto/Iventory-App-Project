@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import CategoriesList from "../CategoriesList/CategoriesList";
 import CategoryForm from "../CategoryForm/CategoryForm";
 import NavBar from "../NavBar/NavBar";
@@ -8,16 +9,12 @@ import ProductsList from "../ProductsList/ProductsList";
 
 const IventoryApp = () => {
    // get categories from localStorage
-   const [categories, setCategories] = useState(
-      JSON.parse(localStorage.getItem("categories")) || [],
-   );
+   const [categories, setCategories] = useLocalStorage("categories", []);
 
    // get products from localStorage
-   const [products, setProducts] = useState(
-      JSON.parse(localStorage.getItem("products")) || [],
-   );
+   const [products, setProducts] = useLocalStorage("products", []);
 
-   // filterd products
+   // filtered products
    const [filteredProducts, setFilteredProducts] = useState([]);
 
    // the value of the filter select option on Filter component
@@ -26,12 +23,6 @@ const IventoryApp = () => {
    const [sortValue, setSortValue] = useState("newest");
 
    useEffect(() => {
-      // update categories on changes
-      localStorage.setItem("categories", JSON.stringify(categories));
-
-      // update products on changes
-      localStorage.setItem("products", JSON.stringify(products));
-
       // update sorted products on changes
       sortHandler(sortValue, products);
 
