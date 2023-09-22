@@ -88,10 +88,10 @@ const Product = ({ product, removeProduct, editHandler }) => {
          {isMore && (
             <div className={styles.more}>
                {/* product created date */}
-               <span>
-                  {new Date(product.createdAt).toLocaleString("en", {
-                     weekday: "short",
-                     month: "short",
+               <span style={{ fontFamily: "B Koodak", fontSize: "1.4rem" }}>
+                  {new Date(product.createdAt).toLocaleString("fa", {
+                     year: "numeric",
+                     month: "numeric",
                      day: "numeric",
                   })}
                </span>

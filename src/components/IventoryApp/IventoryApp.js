@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import CategoriesList from "../CategoriesList/CategoriesList";
 import CategoryForm from "../CategoryForm/CategoryForm";
 import NavBar from "../NavBar/NavBar";
 import ProductsForm from "../ProductForm/ProductForm";
-import { toast } from "react-toastify";
 import ProductsList from "../ProductsList/ProductsList";
-import CategoriesList from "../CategoriesList/CategoriesList";
 
 const IventoryApp = () => {
    // get categories from localStorage
@@ -50,9 +50,6 @@ const IventoryApp = () => {
 
       // update categories
       setCategories([...categories, newCategory]);
-
-      // new new data
-      localStorage.setItem("categories", JSON.stringify(categories));
    };
 
    const addProductHandler = (product) => {
@@ -66,15 +63,6 @@ const IventoryApp = () => {
       // update products
       const updatedProducts = [...products, newProduct];
       setProducts(updatedProducts);
-
-      // set new data
-      localStorage.setItem("products", JSON.stringify(products));
-
-      // update sorted products
-      sortHandler(sortValue, updatedProducts);
-
-      // update filtered products
-      filterHandler(filterValue, updatedProducts);
    };
 
    const removeProductHandler = (id) => {
@@ -83,15 +71,6 @@ const IventoryApp = () => {
 
       // update products
       setProducts(filteredProducts);
-
-      // set new data
-      localStorage.setItem("products", JSON.stringify(filteredProducts));
-
-      // update sorted products
-      sortHandler(sortValue, filteredProducts);
-
-      // update filtered products
-      filterHandler(filterValue, filteredProducts);
 
       toast.success("product successfully deleted");
    };
@@ -142,9 +121,6 @@ const IventoryApp = () => {
       // update categories
       setCategories(filteredCategories);
 
-      // set new data
-      localStorage.setItem("categories", JSON.stringify(filteredCategories));
-
       toast.success("category successfully deleted");
 
       // remove all products with deleted category
@@ -169,7 +145,6 @@ const IventoryApp = () => {
       const updatedProducts = [...products];
       updatedProducts[index] = product;
       setProducts(updatedProducts);
-      localStorage.setItem("products", JSON.stringify(updatedProducts));
 
       toast.success("product title successfully edited");
    };

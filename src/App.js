@@ -4,13 +4,9 @@ import "react-toastify/dist/ReactToastify.css";
 import "./app.css";
 
 const App = () => {
-   const styles = {
-      fontSize: "16px",
-   };
-
    return (
       <div className="app">
-         <ToastContainer style={styles} />
+         <ToastContainer style={{ fontSize: "16px" }} />
          <IventoryApp />
       </div>
    );

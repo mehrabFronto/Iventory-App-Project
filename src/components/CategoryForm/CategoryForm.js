@@ -6,18 +6,20 @@ const CategoryForm = ({ addCategory }) => {
    const [title, setTitle] = useState("");
 
    const submitHandler = (e) => {
-      // if the user did not enter the category title => return alert
-      if (!title) return alert("please enter the category title");
-
       e.preventDefault();
 
-      // pass the category title to addCategoryHandler to add other properties and save on categories
-      addCategory(title);
+      // if the user did not enter the category title => return alert
+      if (!title) {
+         toast.error("please enter the category title");
+      } else {
+         // pass the category title to addCategoryHandler to add other properties and save on categories
+         addCategory(title);
 
-      // clear the input
-      setTitle("");
+         // clear the input
+         setTitle("");
 
-      toast.success("category successfully added");
+         toast.success("category successfully added");
+      }
    };
 
    return (
@@ -43,7 +45,7 @@ const CategoryForm = ({ addCategory }) => {
                <button
                   className="btn btn--secondary"
                   type="button"
-                  onChange={() => setTitle("")}>
+                  onClick={() => setTitle("")}>
                   Cancel
                </button>
                {/* add btn */}

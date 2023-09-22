@@ -1,5 +1,5 @@
-import { toast } from "react-toastify";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ProductsForm = ({ options, addProduct }) => {
    // new product
@@ -10,32 +10,40 @@ const ProductsForm = ({ options, addProduct }) => {
    });
 
    const submitHandler = (e) => {
-      // if the user did not enter the product title => return alert
-      if (!product.title) return alert("please enter the product title");
-
-      // if the user did not select the product category => return alert
-      if (!product.category) return alert("please select the product category");
-
       e.preventDefault();
 
-      // create new product
-      const newProduct = {
-         title: product.title,
-         category: product.category,
-         quantity: Number(product.quantity),
-      };
+      // if the user did not enter the product title => return alert
+      if (!product.title) {
+         toast.error("please enter the product title");
+      }
+      // if the user did not select the product category => return alert
+      else if (!product.category) {
+         toast.error("please select the product category");
+      } else {
+         // create new product
+         const newProduct = {
+            title: product.title,
+            category: product.category,
+            quantity: Number(product.quantity),
+         };
 
-      // pass the new product to addProductHandler to add other properties and save on products
-      addProduct(newProduct);
+         // pass the new product to addProductHandler to add other properties and save on products
+         addProduct(newProduct);
 
-      // clear the inputs
-      setProduct({
-         title: "",
-         category: "",
-         quantity: "",
-      });
+         // clear the inputs
+         setProduct({
+            title: "",
+            category: "",
+            quantity: "",
+         });
 
-      toast.success("product successfully added");
+         toast.success("product successfully added");
+      }
+   };
+
+   const changeHandler = ({ target }) => {
+      const { value, name } = target;
+      setProduct({ ...product, [name]: value });
    };
 
    return (
@@ -47,19 +55,17 @@ const ProductsForm = ({ options, addProduct }) => {
             {/* title input */}
             <input
                type="text"
+               name="title"
                placeholder="product title..."
                className="form__input"
-               onChange={(e) =>
-                  setProduct({ ...product, title: e.target.value })
-               }
+               onChange={(e) => changeHandler(e)}
                value={product.title}
             />
             {/* categories select option */}
             <select
                className="select form__select"
-               onChange={(e) =>
-                  setProduct({ ...product, category: e.target.value })
-               }
+               name="category"
+               onChange={(e) => changeHandler(e)}
                value={product.category}>
                <option value="">Select a category</option>
                {/* render all options (categories) */}
@@ -68,11 +74,10 @@ const ProductsForm = ({ options, addProduct }) => {
             {/* quantity input */}
             <input
                type="number"
+               name="quantity"
                placeholder="product quantity..."
                className="form__input"
-               onChange={(e) =>
-                  setProduct({ ...product, quantity: e.target.value })
-               }
+               onChange={(e) => changeHandler(e)}
                value={product.quantity}
             />
             {/* buttons */}
