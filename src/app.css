@@ -21,7 +21,7 @@
    border: none;
    outline: none;
    padding: 10px;
-   border-radius: 4px;
+   border-radius: 8px;
    font-size: 1.4rem;
    transition: all 0.2s ease-in;
 }
@@ -115,7 +115,7 @@
    padding: 15px;
    background-color: var(--secondary-color);
    box-shadow: 0px 5px 15px var(--box-shadow-color);
-   border-radius: 6px;
+   border-radius: 10px;
 }
 
 .form--edit {
@@ -129,10 +129,6 @@
       padding: 0;
       margin-bottom: 40px;
    }
-
-   .form__body {
-      padding: 20px;
-   }
 }
 
 @media screen and (min-width: 1024px) {
@@ -144,11 +140,11 @@
    }
 
    .form__body {
-      padding: 20px;
+      padding: 18px;
    }
 
    .form--edit {
-      width: 48rem;
+      width: 50rem;
    }
 }
 
@@ -157,8 +153,8 @@
 .form__input {
    outline: none;
    border: none;
-   border-radius: 4px;
-   padding: 15px 10px;
+   border-radius: 8px;
+   padding: 18px 15px;
    width: 100%;
    background-color: var(--primary-color);
    color: var(--secondary-color);
@@ -188,11 +184,11 @@
    text-overflow: "";
    background-repeat: no-repeat;
    background-position-x: 97%;
-   background-position-y: 10px;
+   background-position-y: 14px;
    outline: none;
    border: none;
-   border-radius: 4px;
-   padding: 15px 10px;
+   border-radius: 8px;
+   padding: 18px 15px;
    width: 100%;
    transition: all 0.2s ease-in;
 }
@@ -222,7 +218,7 @@
    background-color: var(--secondary-color);
    color: var(--primary-color);
    padding: 15px 20px;
-   border-radius: 4px;
+   border-radius: 10px;
    box-shadow: 0px 5px 15px var(--box-shadow-color);
 }
 

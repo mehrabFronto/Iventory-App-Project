@@ -1,5 +1,5 @@
 .modal {
-   width: 98%;
+   width: 94%;
    min-height: 250px;
    position: absolute;
    top: 50%;
@@ -35,7 +35,7 @@
 
 @media (min-width: 768px) {
    .modal {
-      max-width: 50rem;
+      max-width: 52rem;
    }
 }
 
