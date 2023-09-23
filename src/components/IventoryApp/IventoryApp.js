@@ -120,16 +120,15 @@ const IventoryApp = () => {
       localStorage.setItem("products", JSON.stringify(updatedProducts));
    };
 
-   const editProductHandler = (id, newTitle) => {
+   const editProductHandler = (id, updatedProduct) => {
       // find and get the product
       const index = products.findIndex((p) => p.id === id);
       const product = { ...products[index] };
 
-      // if title was not changed
-      if (product.title === newTitle) return;
-
-      // change title and date
-      product.title = newTitle;
+      // change title,category,quantity and date
+      product.title = updatedProduct.title;
+      product.category = updatedProduct.category;
+      product.quantity = updatedProduct.quantity;
       product.createdAt = new Date().toISOString();
 
       // update products new new product

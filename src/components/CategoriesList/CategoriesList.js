@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { BiX } from "react-icons/bi";
-import styles from "./categoriesList.module.css";
+import Modal from "../../common/Modal/Modal";
 import Category from "../Category/Category";
+import styles from "./categoriesList.module.css";
 
 const CategoriesList = ({ categories, onRemove }) => {
    // for handle being open the categories list
@@ -46,19 +46,16 @@ const CategoriesList = ({ categories, onRemove }) => {
                Categories List ?
             </p>
          ) : (
-            <div className={styles.categories}>
-               <div className={styles.categories__header}>
-                  <h2>categories list :</h2>
-                  <button
-                     className={`btn ${styles.x}`}
-                     onClick={() => setIsVisible(!isVisible)}>
-                     <BiX />
-                  </button>
+            <Modal
+               title="Categories List:"
+               open={isVisible}
+               onOpen={setIsVisible}>
+               <div className={styles.categories}>
+                  <div className={`list ${styles.categories__list}`}>
+                     {renderCategories()}
+                  </div>
                </div>
-               <div className={`list ${styles.categories__list}`}>
-                  {renderCategories()}
-               </div>
-            </div>
+            </Modal>
          )}
       </div>
    );

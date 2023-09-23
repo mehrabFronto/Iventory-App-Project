@@ -25,6 +25,7 @@ const ProductsList = ({
             product={p}
             removeProduct={removeProduct}
             editHandler={editHandler}
+            options={options}
          />
       ));
    };
