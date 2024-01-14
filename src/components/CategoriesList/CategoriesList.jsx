@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Modal from "../../common/Modal/Modal";
 import Category from "../Category/Category";
 import styles from "./categoriesList.module.css";
