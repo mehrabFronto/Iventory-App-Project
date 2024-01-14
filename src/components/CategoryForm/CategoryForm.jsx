@@ -50,6 +50,7 @@ const CategoryForm = ({ addCategory }) => {
                </button>
                {/* add btn */}
                <button
+                  data-testid="category-btn"
                   className="btn btn--primary"
                   type="submit">
                   Add

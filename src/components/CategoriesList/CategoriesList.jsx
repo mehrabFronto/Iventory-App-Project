@@ -25,6 +25,7 @@ const CategoriesList = ({ categories, onRemove }) => {
       return categories.map((c) => {
          return (
             <div
+               data-testid="category-item"
                className="item__container"
                key={c.id}>
                <Category

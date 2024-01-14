@@ -1,6 +1,6 @@
-import { useState } from "react";
-import styles from "./category.module.css";
+import React, { useState } from "react";
 import { BiTrash } from "react-icons/bi";
+import styles from "./category.module.css";
 
 const Category = ({ category, onRemove }) => {
    const [isDelete, setIsDelete] = useState(false);

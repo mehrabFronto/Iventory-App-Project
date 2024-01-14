@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import styles from "./filter.module.css";
 
 const Filter = ({ options, filterHandler, sortHandler }) => {

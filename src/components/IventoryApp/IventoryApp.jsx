@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import CategoriesList from "../CategoriesList/CategoriesList";
