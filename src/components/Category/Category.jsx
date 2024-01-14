@@ -13,6 +13,7 @@ const Category = ({ category, onRemove }) => {
                <span>products with this category will delete!</span>
                <div className="buttons__container">
                   <button
+                     data-testid="final-delete-category-btn"
                      style={{ padding: "5px" }}
                      className="btn btn--secondary"
                      onClick={() => {
@@ -47,6 +48,7 @@ const Category = ({ category, onRemove }) => {
                {/* buttons */}
                <div className="buttons__container">
                   <button
+                     data-testid="delete-category-btn"
                      className="btn btn--item btn--delete"
                      onClick={() => setIsDelete(true)}>
                      <BiTrash />

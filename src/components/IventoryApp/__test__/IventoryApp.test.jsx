@@ -27,4 +27,23 @@ describe("Add And Remove Category", () => {
       const categoryItem = screen.getByTestId("category-item");
       expect(categoryItem).toBeInTheDocument();
    });
+
+   test("Should Remove Category", () => {
+      render(<IventoryApp />);
+
+      // Open categories list modal
+      const pElement = screen.getByText(/Categories List ?/i);
+      fireEvent.click(pElement);
+
+      const deleteCategoryBtn = screen.getByTestId("delete-category-btn");
+      fireEvent.click(deleteCategoryBtn);
+
+      const finalDeleteCategoryBtn = screen.getByTestId(
+         "final-delete-category-btn",
+      );
+      fireEvent.click(finalDeleteCategoryBtn);
+
+      const categoryItem = screen.queryByTestId("category-item");
+      expect(categoryItem).not.toBeInTheDocument();
+   });
 });
